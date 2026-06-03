@@ -1,12 +1,379 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Jakasipul‑HUB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakasipul‑HUB | Corporate Portal</title>
+    <style>
+        /* Modern Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111827;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #3498db;
+        }
+
+        nav .logo {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #3498db;
+        }
+
+        /* Hero / First Page View */
+        header {
+            background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920') no-repeat center center/cover;
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 1rem;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            color: #d1d5db;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 0.8rem 2.2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Second Page Container Settings */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #3498db;
+            margin: 0.6rem auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Split Layout for About Section */
+        .about-layout {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        /* Left Side: Photo Frame Container */
+        .photo-frame-container {
+            flex: 0 0 280px; /* Locks width to exactly 280px */
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid #2ecc71;
+        }
+
+        .photo-frame-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .photo-frame-container h3 {
+            font-size: 1.2rem;
+            color: #111827;
+            margin-bottom: 0.2rem;
+        }
+
+        .photo-frame-container p {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Right Side: Text Insights Box */
+        .details-box {
+            flex: 1;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .details-box h3 {
+            color: #1f2937;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 0.5rem;
+        }
+
+        .details-box p {
+            color: #4b5563;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Office Grid Layout */
+        .office-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .office-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .office-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 0.5rem;
+        }
+
+        .office-card p {
+            color: #4b5563;
+            font-size: 1rem;
+        }
+
+        /* Regional Management Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border-top: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card .city {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card h4 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .team-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Global Footer */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1f2937;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1.1rem; }
+            section { padding: 3rem 1.5rem; }
+            .about-layout { flex-direction: column; align-items: center; }
+            .photo-frame-container { flex: 1 1 100%; width: 100%; max-width: 350px; }
+            .office-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Jakasipul‑HUB</h1>
-  <p>My platform is live.</p>
 
-  <p>Access & Onboarding Layer</p>
+    <nav>
+        <div class="logo">Jakasipul‑HUB</div>
+        <ul>
+            <li><a href="#overview" class="active">Corporate Profile</a></li>
+            <li><a href="#offices">Offices</a></li>
+            <li><a href="#locations">Global Network</a></li>
+        </ul>
+    </nav>
+
+    <header id="overview">
+        <h1>Jakasipul‑HUB</h1>
+        <p>A unified cloud-native infrastructure bridging communication, structural engineering data processing, and enterprise resource access lines across borders.</p>
+        <a href="#about-section" class="btn">Explore Profile</a>
+    </header>
+
+    <section id="about-section">
+        <h2 class="section-title">Who We Are & What We Do</h2>
+        
+        <div class="about-layout">
+            <div class="photo-frame-container">
+                <img src="https://github.com/Jakasipul-Lab.png" alt="Nakinson Osare">
+                <h3>Nakinson Osare</h3>
+                <p>CEO / Lead Developer</p>
+            </div>
+
+            <div class="details-box">
+                <h3>Our Strategic Profile</h3>
+                <p><strong>Who We Are:</strong> Jakasipul-HUB is a multi-regional technology initiative structured to optimize data accessibility, distributed applications, and localized pipeline onboarding structures.</p>
+                <p><strong>Main Aim:</strong> To break down technical friction across distributed networks by engineering lightweight, secure, and fast endpoints connecting cross-continental operations natively.</p>
+                <p><strong>Project Info:</strong> The hub manages interconnected core services running high-performance asynchronous processes, strict validation schemas, and real-time backend persistence modules.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="offices">Corporate Base Stations</h2>
+        <div class="office-grid">
+            <div class="office-card">
+                <h3>Company Head Office</h3>
+                <p>Oginga Odinga Road Block 45</p>
+            </div>
+            <div class="office-card">
+                <h3>Branch Office (Europe)</h3>
+                <p>Brunenstrasse 48,<br>34547 Bad Wildungen, Germany</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="locations">State Representatives & Branch Networks</h2>
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <div class="city">Tanzania Branch</div>
+                <h4>Johnson Yongongo</h4>
+                <p>Regional State Representative</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">Dar es Salaam Office</p>
+            </div>
+
+            <div class="team-card">
+                <div class="city">Kenya Branch</div>
+                <h4>Kenneth Oketch</h4>
+                <p>Regional State Representative</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">Nairobi Office</p>
+            </div>
+
+            <div class="team-card">
+                <div class="city">Uganda Branch</div>
+                <h4>Ssempembwa Jimmy</h4>
+                <p>Regional State Representative</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #9ca3af;">Kampala Office</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Jakasipul‑HUB</strong>. All corporate data networks deployed and secure via Vercel Edge Hosting.</p>
+    </footer>
+
+    <script>
+        const links = document.querySelectorAll('nav ul li a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
