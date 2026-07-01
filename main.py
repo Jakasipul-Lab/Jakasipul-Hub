@@ -1,10 +1,11 @@
 import os
 import uvicorn
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, HTMLResponse
 
 app = FastAPI()
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).parent
 
 LOCAL_DATABASE = [
     {"keywords": ["bus", "matatu"], "title": "?? Bus & Matatu", "desc": "Daily routes.", "price": "KES 1,200"},
@@ -13,23 +14,23 @@ LOCAL_DATABASE = [
 
 @app.get("/")
 def home():
-    return FileResponse(os.path.join(BASE_DIR, "index.html"))
+    return FileResponse(BASE_DIR / "index.html")
 
 @app.get("/migration.html")
 def migration():
-    return FileResponse(os.path.join(BASE_DIR, "migration.html"))
+    return FileResponse(BASE_DIR / "migration.html")
 
 @app.get("/admin.htm")
 def admin():
-    return FileResponse(os.path.join(BASE_DIR, "admin.htm"))
+    return FileResponse(BASE_DIR / "admin.htm")
 
 @app.get("/support.html")
 def support():
-    return FileResponse(os.path.join(BASE_DIR, "support.html"))
+    return FileResponse(BASE_DIR / "support.html")
 
 @app.get("/dashboard.html")
 def dashboard():
-    return FileResponse(os.path.join(BASE_DIR, "dashboard.html"))
+    return FileResponse(BASE_DIR / "dashboard.html")
 
 @app.get("/search/local")
 def search_local(q: str = ""):
